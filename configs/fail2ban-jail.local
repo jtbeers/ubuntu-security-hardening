@@ -1,0 +1,16 @@
+# Ubuntu Hardening Engine - Fail2ban Intrusion Prevention Configuration
+# Location: /etc/fail2ban/jail.local
+
+[DEFAULT]
+bantime = 1h
+findtime = 10m
+maxretry = 3
+backend = systemd
+
+[sshd]
+enabled = true
+port = ssh
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+maxretry = 3
+bantime = 24h
